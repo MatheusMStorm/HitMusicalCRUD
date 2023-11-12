@@ -1,0 +1,11 @@
+Model\Microfones.class
+DAO\MicrofonesDAO.class
+DAO\AcessoriosDAO.class
+DAO\Conexao.class
+Model\CaixasSom.class
+Model\Acessorios.class
+DAO\InstrumentosDAO.class
+Model\Instrumentos.class
+Model\Produto.class
+DAO\CaixasSomDAO.class
+Principal\Principal.class
