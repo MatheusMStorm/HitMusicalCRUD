@@ -13,13 +13,8 @@ public class Conexao {
     
     private Connection conectar() {
         try {
-<<<<<<< HEAD
             String user = "admin";
             String password = "admin";
-=======
-            String user = "root";
-            String password = "root";
->>>>>>> f6f7d47aca38f3fe5d0fe3b5bfced931874092ad
             String ipBanco = "localhost";
             String nomedoBanco = "hitmusical";
             String connectionStr = "jdbc:mysql://" + ipBanco + "/" + nomedoBanco;
