@@ -1,5 +1,6 @@
 package DAO;
 
+import Control.Conexao;
 import Model.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;

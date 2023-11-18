@@ -1,4 +1,4 @@
-package DAO;
+package Control;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,10 +13,10 @@ public class Conexao {
     
     private Connection conectar() {
         try {
-            String user = "admin";
-            String password = "admin";
-            String ipBanco = "localhost";
-            String nomedoBanco = "hitmusical";
+            String user = "usr_MatheusMRC";
+            String password = "pass_MatheusMRC";
+            String ipBanco = "34.41.134.53";
+            String nomedoBanco = "db_MatheusMRC";
             String connectionStr = "jdbc:mysql://" + ipBanco + "/" + nomedoBanco;
             
             Class.forName("com.mysql.jdbc.Driver");
