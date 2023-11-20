@@ -6,6 +6,7 @@ package View.TelasDelete;
 
 import DAO.*;
 import Model.*;
+import View.MenuPrincipal;
 import javax.swing.JOptionPane;
 
 /**
@@ -101,6 +102,9 @@ public class DeletarInstrumento extends javax.swing.JFrame {
                 "Marca: " + instrumento.getMarca() + "\n" +
                 "Valor: " + instrumento.getValor() + "\n" +
                 "Categoria: " + instrumento.getCategoria());
+        
+        dispose();
+        new MenuPrincipal().show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

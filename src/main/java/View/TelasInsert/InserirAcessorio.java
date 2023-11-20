@@ -6,6 +6,7 @@ package View.TelasInsert;
 
 import Model.*;
 import DAO.*;
+import View.MenuPrincipal;
 import javax.swing.JOptionPane;
 /**
  *
@@ -114,6 +115,9 @@ public class InserirAcessorio extends javax.swing.JFrame {
                             
         acessorioDAO.inserir(acessorio);
         JOptionPane.showMessageDialog(null,"Produto cadastrado com sucesso!");
+        
+        dispose();
+        new MenuPrincipal().show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

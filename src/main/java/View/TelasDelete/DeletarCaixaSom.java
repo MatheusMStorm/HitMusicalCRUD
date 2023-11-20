@@ -6,6 +6,7 @@ package View.TelasDelete;
 
 import DAO.*;
 import Model.*;
+import View.MenuPrincipal;
 import javax.swing.JOptionPane;
 
 /**
@@ -104,6 +105,9 @@ public class DeletarCaixaSom extends javax.swing.JFrame {
                 "Tipo de alto falante: " + caixaSom.getTipoAltoFalante() + "\n" +
                 "Quantidade de alto falantes: " + caixaSom.getQtdAltoFalantes() + "\n" +
                 "Configuração de canais: " + caixaSom.getConfigCanais());
+        
+        dispose();
+        new MenuPrincipal().show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

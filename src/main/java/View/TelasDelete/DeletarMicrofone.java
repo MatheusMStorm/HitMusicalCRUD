@@ -6,6 +6,7 @@ package View.TelasDelete;
 
 import DAO.*;
 import Model.*;
+import View.MenuPrincipal;
 import javax.swing.JOptionPane;
 
 /**
@@ -104,6 +105,9 @@ public class DeletarMicrofone extends javax.swing.JFrame {
                 "Tipo: " + microfone.getTipo() + "\n" +
                 "Frequência mínima: " + microfone.getFrequenciaMin() + "\n" +
                 "Padrão polar: " + microfone.getPadraoPolar());
+        
+        dispose();
+        new MenuPrincipal().show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

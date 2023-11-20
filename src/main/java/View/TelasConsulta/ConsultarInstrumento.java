@@ -4,8 +4,13 @@
  */
 package View.TelasConsulta;
 
-import DAO.*;
-import Model.*;
+import View.MenuPrincipal;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +23,7 @@ public class ConsultarInstrumento extends javax.swing.JFrame {
      */
     public ConsultarInstrumento() {
         initComponents();
+        preencherTabela();
     }
 
     /**
@@ -35,6 +41,7 @@ public class ConsultarInstrumento extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,20 +72,29 @@ public class ConsultarInstrumento extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Voltar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -88,7 +104,8 @@ public class ConsultarInstrumento extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
@@ -110,15 +127,69 @@ public class ConsultarInstrumento extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        InstrumentosDAO instrumentoDAO = new InstrumentosDAO();
-        Instrumentos instrumento = null;
+        
         String descricao = jTextField1.getText();
        
-        instrumento = instrumentoDAO.consultar(descricao);
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setNumRows(0);
+        
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://34.41.134.53/db_MatheusMRC", "usr_MatheusMRC", "pass_MatheusMRC");
+            PreparedStatement pstm = conn.prepareStatement("SELECT * FROM Instrumentos WHERE descricaoInstrumento LIKE '%" + descricao + "%';");
+            ResultSet rs = pstm.executeQuery();
+            
+            while (rs.next()) {
+                modelo.addRow(new Object[]{
+                    rs.getInt("idInstrumento"),
+                    rs.getString("descricaoInstrumento"),
+                    rs.getString("marcaInstrumento"),
+                    rs.getDouble("valorInstrumento"),
+                    rs.getString("categoria")
+                });
+            }
+            
+            conn.close();
+        }
+        catch (Exception ErroSQL) {
+            JOptionPane.showMessageDialog(null, "Erro ao acessar a tabela.");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        dispose();
+        new MenuPrincipal().show();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void preencherTabela() {
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setNumRows(0);
+        
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://34.41.134.53/db_MatheusMRC", "usr_MatheusMRC", "pass_MatheusMRC");
+            PreparedStatement pstm = conn.prepareStatement("SELECT * FROM Instrumentos;");
+            ResultSet rs = pstm.executeQuery();
+            
+            while (rs.next()) {
+                modelo.addRow(new Object[]{
+                    rs.getInt("idInstrumento"),
+                    rs.getString("descricaoInstrumento"),
+                    rs.getString("marcaInstrumento"),
+                    rs.getDouble("valorInstrumento"),
+                    rs.getString("categoria")
+                });
+            }
+            
+            conn.close();
+        }
+        catch (Exception ErroSQL) {
+            JOptionPane.showMessageDialog(null, "Erro ao acessar a tabela.");
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

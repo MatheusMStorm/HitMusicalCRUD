@@ -6,6 +6,7 @@ package View.TelasDelete;
 
 import DAO.*;
 import Model.*;
+import View.MenuPrincipal;
 import javax.swing.JOptionPane;
 
 /**
@@ -101,6 +102,9 @@ public class DeletarAcessorio extends javax.swing.JFrame {
                 "Marca: " + acessorio.getMarca() + "\n" +
                 "Valor: " + acessorio.getValor() + "\n" +
                 "Categoria: " + acessorio.getCategoria());
+        
+        dispose();
+        new MenuPrincipal().show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

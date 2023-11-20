@@ -7,6 +7,7 @@ package View.TelasUpdate;
 import View.TelasInsert.*;
 import Model.*;
 import DAO.*;
+import View.MenuPrincipal;
 import javax.swing.JOptionPane;
 /**
  *
@@ -129,6 +130,9 @@ public class AtualizarAcessorio extends javax.swing.JFrame {
                             
         acessorioDAO.alterar(acessorio);
         JOptionPane.showMessageDialog(null,"Produto atualizado com sucesso!");
+        
+        dispose();
+        new MenuPrincipal().show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

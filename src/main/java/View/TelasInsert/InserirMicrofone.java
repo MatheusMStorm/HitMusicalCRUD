@@ -6,6 +6,7 @@ package View.TelasInsert;
 
 import Model.*;
 import DAO.*;
+import View.MenuPrincipal;
 import javax.swing.JOptionPane;
 /**
  *
@@ -159,6 +160,9 @@ public class InserirMicrofone extends javax.swing.JFrame {
                             
         microfoneDAO.inserir(microfone);
         JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
+        
+        dispose();
+        new MenuPrincipal().show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

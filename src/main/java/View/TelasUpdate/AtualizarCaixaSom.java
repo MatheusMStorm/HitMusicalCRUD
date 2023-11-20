@@ -6,6 +6,7 @@ package View.TelasUpdate;
 
 import Model.*;
 import DAO.*;
+import View.MenuPrincipal;
 import javax.swing.JOptionPane;
 /**
  *
@@ -173,6 +174,9 @@ public class AtualizarCaixaSom extends javax.swing.JFrame {
                             
         caixaSomDAO.alterar(caixaSom);
         JOptionPane.showMessageDialog(null, "Produto atualizar com sucesso!");
+        
+        dispose();
+        new MenuPrincipal().show();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
