@@ -153,8 +153,10 @@ public class InserirCaixaSom extends javax.swing.JFrame {
         caixaSom.setDescricao(jTextField1.getText());
         caixaSom.setMarca(jTextField2.getText());
         caixaSom.setValor(Double.parseDouble(jTextField3.getText()));
+        jTextField4 = new javax.swing.JTextField("0");
         caixaSom.setPotenciaSaida(Integer.parseInt(jTextField4.getText()));
         caixaSom.setTipoAltoFalante(jTextField5.getText());
+        jTextField6 = new javax.swing.JTextField("0");
         caixaSom.setQtdAltoFalantes(Integer.parseInt(jTextField6.getText()));
         caixaSom.setConfigCanais(jTextField7.getText());
                             
